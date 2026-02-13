@@ -32,16 +32,6 @@ updates:
     ignore:
       - dependency-name: "pydantic"
         versions: [">= 2.0.0"] 
-        
-  - package-ecosystem: "docker"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    
-    groups:
-      docker-base:
-        patterns:
-          - "*"
           
     ignore:
       - dependency-name: "*"

@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "LocalMeeting AI",
+  "version": "1.0.0",
+  "description": "Transcrição e análise local de reuniões via processamento de áudio seguro.",
+  "permissions": [
+    "tabCapture",
+    "offscreen",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:8000/*",
+    "ws://127.0.0.1:8000/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src ws://127.0.0.1:8000 http://127.0.0.1:8000"
+  }
+}

@@ -1,21 +1,58 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
-
 version: 2
 updates:
-  - package-ecosystem: "github-actions"
+  - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "weekly"
-      day: "monday"
-    reviewers:
-      - "AlbaBot"
-    labels:
-      - "ci"
-      - "actions"
+      day: "wednesday" 
+    
+    open-pull-requests-limit: 10
+    
+    commit-message:
+      prefix: "fix(deps)"
+      prefix-development: "chore(deps-dev)"
+
     groups:
-      all-actions:
+      ai-core:
+        patterns:
+          - "torch*"
+          - "tensorflow*"
+          - "transformers*"
+          - "openai*"
+          - "whisper*"
+          - "huggingface-hub"
+      
+      data-processing:
+        patterns:
+          - "numpy"
+          - "pandas"
+          - "scipy"
+          - "scikit-learn"
+
+    ignore:
+      - dependency-name: "pydantic"
+        versions: [">= 2.0.0"] 
+        
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    
+    groups:
+      docker-base:
+        patterns:
+          - "*"
+          
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly" 
+    
+    groups:
+      github-actions:
         patterns:
           - "*"

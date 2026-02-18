@@ -3,7 +3,7 @@ uvicorn[standard]==0.41.0
 fastapi==0.129.0
 uvicorn[standard]==0.41.0
 faster-whisper==1.2.1
-transformers==5.1.0
+transformers==5.2.0
 torch==2.10.0
 pydub==0.25.1
 python-multipart==0.0.22
